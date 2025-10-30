@@ -6,12 +6,25 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "serve": "python3 -m http.server 8000"
+    "serve": "python3 -m http.server 8000",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
-  "keywords": ["game-of-life", "conway", "typescript", "canvas"],
+  "keywords": [
+    "game-of-life",
+    "conway",
+    "typescript",
+    "canvas"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "@vitest/coverage-v8": "^4.0.5",
+    "happy-dom": "^20.0.10",
+    "jsdom": "^27.0.1",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.5"
   }
 }
