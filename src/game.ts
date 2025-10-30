@@ -50,26 +50,28 @@ export class Game {
     // Erstelle eine Kopie des aktuellen Zustands
     const currentState = this.grid.clone();
 
-    // Berechne den neuen Zustand für jede Zelle
+    // Berechne den neuen Zustand für jede Zelle basierend auf der Kopie
+    const newState: boolean[][] = Array.from({ length: height }, () =>
+      Array.from({ length: width }, () => false)
+    );
+
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const neighbors = this.grid.countNeighbors(x, y);
         const isAlive = currentState[y][x];
 
-        let newState = false;
-
         if (isAlive) {
           // Regel für lebende Zellen: Überleben mit 2-3 Nachbarn
-          newState = neighbors === 2 || neighbors === 3;
+          newState[y][x] = neighbors === 2 || neighbors === 3;
         } else {
           // Regel für tote Zellen: Werden lebendig mit genau 3 Nachbarn
-          newState = neighbors === 3;
+          newState[y][x] = neighbors === 3;
         }
-
-        this.grid.setCell(x, y, newState);
       }
     }
 
+    // Setze den neuen Zustand auf einmal
+    this.grid.setState(newState);
     this.generation++;
   }
 

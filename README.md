@@ -76,18 +76,50 @@ npm run watch
 
 Dies kompiliert TypeScript automatisch bei jeder Änderung neu.
 
+### Tests
+
+Das Projekt verfügt über umfassende Unit-Tests mit **100% Code-Coverage**.
+
+**Tests ausführen:**
+```bash
+npm test
+```
+
+**Tests mit Coverage-Report:**
+```bash
+npm run test:coverage
+```
+
+**Test-Suites:**
+- **config.test.ts**: Tests für Konfiguration und Farbschemas (39 Tests)
+- **grid.test.ts**: Tests für Grid-Verwaltung und Nachbarzählung (41 Tests)
+- **game.test.ts**: Tests für Conway's Game of Life Regeln (32 Tests)
+- **renderer.test.ts**: Tests für Canvas-Rendering (37 Tests)
+
+**Coverage:**
+- Statements: 100%
+- Branches: 100%
+- Functions: 100%
+- Lines: 100%
+
 ## Projektstruktur
 
 ```
 game-of-life/
 ├── src/
+│   ├── __tests__/        # Unit-Tests
+│   │   ├── config.test.ts
+│   │   ├── game.test.ts
+│   │   ├── grid.test.ts
+│   │   └── renderer.test.ts
 │   ├── index.ts          # Entry Point und UI-Logik
 │   ├── game.ts           # Conway's Game of Life Regeln
 │   ├── grid.ts           # Grid-Verwaltung
 │   ├── renderer.ts       # Canvas-Rendering
 │   └── config.ts         # Konfiguration und Farbschemas
 ├── dist/                 # Kompilierte JavaScript-Dateien
-├── index.html           # Haupt-HTML-Datei
+├── index.html            # Haupt-HTML-Datei
+├── vitest.config.ts      # Vitest-Konfiguration
 ├── package.json
 ├── tsconfig.json
 └── README.md
